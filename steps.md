@@ -88,5 +88,5 @@ echo $PROMETHEUS_URL $ELASTIC_URL
 #update examples/workloads/api-intensive/api-intensive.yml
 sed -i -e "s~$ELASTIC_URL_ORG~$ELASTIC_URL~g" ./examples/workloads/api-intensive/api-intensive.yml
 cd examples/workloads/api-intensive
-kube-burner init -c api-intensive.yml -u http://${PROMETHEUS_URL} -m ../../metrics-profiles/etcdapi.yml      
+kube-burner init -c api-intensive.yml -u http://${PROMETHEUS_URL} -m ../../metrics-profiles/etcdapi.yml
 ```
