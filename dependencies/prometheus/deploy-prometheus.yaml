@@ -48,25 +48,25 @@ spec:
     - port: 80
       targetPort: 9090
 ---
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: prometheus-ui
-  namespace: monitoring
-  annotations:
-    kubernetes.io/ingress.class: contour
-spec:
-  rules:
-  - host: prometheus.example.com
-    http:
-      paths:
-      - backend:
-          serviceName: prometheus-service
-          servicePort: 80
-  #tls:
-  #- hosts: 
-  #  - prometheus.example.com
-  #  secretName: prometheus-secret
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: prometheus-ui
+#  namespace: monitoring
+#  annotations:
+#    kubernetes.io/ingress.class: contour
+#spec:
+#  rules:
+#  - host: prometheus.example.com
+#    http:
+#      paths:
+#      - backend:
+#          serviceName: prometheus-service
+#          servicePort: 80
+#  #tls:
+#  #- hosts: 
+#  #  - prometheus.example.com
+#  #  secretName: prometheus-secret
 #---
 #apiVersion: v1 
 #kind: Secret 
