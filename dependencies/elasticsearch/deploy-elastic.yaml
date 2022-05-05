@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: elasticsearch-kibana
+  name: monitoring
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: elasticsearch
-  namespace: elasticsearch-kibana
+  namespace: monitoring
   labels:
     app: elasticsearch
 spec:
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: elasticsearch
-  namespace: elasticsearch-kibana
+  namespace: monitoring
   labels:
     app: elasticsearch
 spec:
