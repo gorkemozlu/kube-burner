@@ -54,7 +54,7 @@ data:
                 "editable": true,
                 "name": "kube-burner",
                 "type": "elasticsearch",
-                "url": "http://elasticsearch.dorn.gorke.ml",
+                "url": "http://elasticsearch.monitoring.svc:9200",
                 "database": kubeburner,
                 "jsonData": {
                   timeField: "timestamp",

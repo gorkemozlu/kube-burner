@@ -5,7 +5,7 @@ global:
   createTarball: true
   indexerConfig:
     enabled: true
-    esServers: [http://elasticsearch.dorn.gorke.ml]
+    esServers: [http://10.220.12.85:9200]
     insecureSkipVerify: true
     defaultIndex: kubeburner
     type: elastic
