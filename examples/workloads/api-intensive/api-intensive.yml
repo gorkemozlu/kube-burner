@@ -5,7 +5,7 @@ global:
   createTarball: true
   indexerConfig:
     enabled: true
-    esServers: [http://10.220.12.85:9200]
+    esServers: [http://ELASTIC_URL:9200]
     insecureSkipVerify: true
     defaultIndex: kubeburner
     type: elastic
