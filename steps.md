@@ -66,8 +66,6 @@ sed -i -e "s~$IMG7_ORG~$IMG7~g" ./examples/workloads/api-intensive/templates/dep
 
 
 ```
-
-#update examples/workloads/api-intensive/api-intensive.yml
 wget https://github.com/cloud-bulldozer/kube-burner/releases/download/v0.15.4/kube-burner-0.15.4-Linux-x86_64.tar.gz
 tar -xvf kube-burner-0.15.4-Linux-x86_64.tar.gz
 sudo cp kube-burner /usr/local/bin/kube-burner
@@ -76,13 +74,19 @@ sudo cp kube-burner /usr/local/bin/kube-burner
 
 ```
 kubectl create ns monitoring
+kubectl apply -f dependencies/elasticsearch
 kubectl apply -f dependencies/node-exporter
 kubectl apply -f dependencies/kube-state-metrics
 kubectl apply -f dependencies/prometheus
 kubectl apply -f dependencies/grafana
-#import dashboard
-kubectl apply -f dependencies/elasticsearch
 kubectl get svc, pods -n monitoring
+#import dashboard examples/grafana-dashboards/api-and-etcd.json
+export PROMETHEUS_URL=$(kubectl get svc prometheus-service -n monitoring -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+export ELASTIC_URL=$(kubectl get svc elasticsearch -n monitoring -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+export ELASTIC_URL_ORG=ELASTIC_URL
+echo $PROMETHEUS_URL $ELASTIC_URL
+#update examples/workloads/api-intensive/api-intensive.yml
+sed -i -e "s~$ELASTIC_URL_ORG~$ELASTIC_URL~g" ./examples/workloads/api-intensive/api-intensive.yml
 cd examples/workloads/api-intensive
-kube-burner init -c api-intensive.yml -u http://prometheus.dorn.gorke.ml -m ../../metrics-profiles/etcdapi.yml      
+kube-burner init -c api-intensive.yml -u http://${PROMETHEUS_URL} -m ../../metrics-profiles/etcdapi.yml      
 ```
