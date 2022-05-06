@@ -35,21 +35,21 @@ sudo docker push $IMG4
 
 export IMG5_ORG=docker.io/bitnami/elasticsearch:7.15.2
 export IMG5=$HARBOR_PUSH_URL/$IMG5_ORG
-export IMG5_PULL=$HARBOR_PULL_URL/docker.io/$IMG5_ORG
+export IMG5_PULL=$HARBOR_PULL_URL/$IMG5_ORG
 sudo docker pull $IMG5_PULL
 sudo docker tag $IMG5_PULL $IMG5
 sudo docker push $IMG5
 
 export IMG6_ORG=docker.io/bitnami/bitnami-shell:10-debian-10-r138
 export IMG6=$HARBOR_PUSH_URL/$IMG6_ORG
-export IMG6_PULL=$HARBOR_PULL_URL/docker.io/$IMG6_ORG
+export IMG6_PULL=$HARBOR_PULL_URL/$IMG6_ORG
 sudo docker pull $IMG6_PULL
 sudo docker tag $IMG6_PULL $IMG6
 sudo docker push $IMG6
 
 export IMG7_ORG=k8s.gcr.io/pause:3.1
 export IMG7=$HARBOR_PUSH_URL/$IMG7_ORG
-export IMG7_PULL=$HARBOR_PULL_URL/docker.io/$IMG7_ORG
+export IMG7_PULL=$HARBOR_PULL_URL/$IMG7_ORG
 sudo docker pull $IMG7_PULL
 sudo docker tag $IMG7_PULL $IMG7
 sudo docker push $IMG7
