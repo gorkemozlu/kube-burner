@@ -90,3 +90,13 @@ sed -i -e "s~$ELASTIC_URL_ORG~$ELASTIC_URL~g" ./examples/workloads/api-intensive
 cd examples/workloads/api-intensive
 kube-burner init -c api-intensive.yml -u http://$PROMETHEUS_URL -m ../../metrics-profiles/etcdapi.yml
 ```
+
+```
+kubectl apply -f dependencies/grafana/deploy-grafana.yaml
+export GRAFANA_POD=$(kubectl get pods -n monitoring|grep grafana|awk '{print $1}')
+kubectl delete pod $GRAFANA_POD -n monitoring
+kubectl apply -f dependencies/prometheus/deploy-prometheus.yaml
+export PROMETHEUS_POD=$(kubectl get pods -n monitoring|grep prometheus|awk '{print $1}')
+kubectl delete pod $PROMETHEUS_POD -n monitoring
+#import k8s-api-server dashboard ->  dependencies/grafana/kubernetes-api-server_rev1.json
+```
