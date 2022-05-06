@@ -14,21 +14,21 @@ sudo docker push $IMG1
 
 export IMG2_ORG=prom/prometheus
 export IMG2=$HARBOR_PUSH_URL/docker.io/$IMG2_ORG
-export IMG2_PULL=$HARBOR_PULL_URL/$IMG2_ORG
+export IMG2_PULL=$HARBOR_PULL_URL/docker.io/$IMG2_ORG
 sudo docker pull $IMG2_PULL
 sudo docker tag $IMG2_PULL $IMG2
 sudo docker push $IMG2
 
 export IMG3_ORG=grafana/grafana:7.5.15
 export IMG3=$HARBOR_PUSH_URL/docker.io/$IMG3_ORG
-export IMG3_PULL=$HARBOR_PULL_URL/$IMG3_ORG
+export IMG3_PULL=$HARBOR_PULL_URL/docker.io/$IMG3_ORG
 sudo docker pull $IMG3_PULL
 sudo docker tag $IMG3_PULL $IMG3
 sudo docker push $IMG3
 
 export IMG4_ORG=prom/node-exporter
 export IMG4=$HARBOR_PUSH_URL/docker.io/$IMG4_ORG
-export IMG4_PULL=$HARBOR_PULL_URL/$IMG4_ORG
+export IMG4_PULL=$HARBOR_PULL_URL/docker.io/$IMG4_ORG
 sudo docker pull $IMG4_PULL
 sudo docker tag $IMG4_PULL $IMG4
 sudo docker push $IMG4
